@@ -10,18 +10,16 @@ public class Main {
     public static final int  HALF_WIDTH = 15;
 
     public static void main(String[] args) throws SQLException {
-        String url = "jdbc:postgresql://localhost:5432/dad";
-        Map<String, Abonent> abonents = null;
-        try (Connection conn = DriverManager.getConnection(url, "postgres", "post")) {
-            try (Statement statement = conn.createStatement()) {
-                String query = "select contact.fullname, phone.phonenumber, dict_phonetype.name from contact \n" +
-                        "\tjoin phone on contact.id = phone.contact_id \n" +
-                        "\tjoin dict_phonetype on dict_phonetype.id = phonetype_id;";
-                ResultSet resultSet = statement.executeQuery(query);
-                abonents = getAbonentsMap(resultSet);
-            }
+        Map<String, icmit.dad.laborators.lab1.Abonent> abonents = null;
+        DBWork dbWork = DBWork.getInstance();
+        try (Statement statement = dbWork.getConnection().createStatement()) {
+            String query = "select contact.fullname, phone.phonenumber, dict_phonetype.name from contact \n" +
+                    "\tjoin phone on contact.id = phone.contact_id \n" +
+                    "\tjoin dict_phonetype on dict_phonetype.id = phonetype_id;";
+            ResultSet resultSet = statement.executeQuery(query);
+            abonents = getAbonentsMap(resultSet);
+            printAbonents(abonents);
         }
-        printAbonents(abonents);
     }
 
     private static Map<String, Abonent> getAbonentsMap(ResultSet resultSet) throws SQLException {
