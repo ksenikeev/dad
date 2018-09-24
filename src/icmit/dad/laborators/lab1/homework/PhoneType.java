@@ -1,4 +1,4 @@
-package icmit.dad.laborators.lab1;
+package icmit.dad.laborators.lab1.homework;
 
 public enum PhoneType {
 

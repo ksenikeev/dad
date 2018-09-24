@@ -1,4 +1,4 @@
-package icmit.dad.laborators.lab1;
+package icmit.dad.laborators.lab1.homework;
 
 import java.sql.*;
 import java.util.HashMap;
@@ -10,7 +10,7 @@ public class Main {
     public static final int  HALF_WIDTH = 15;
 
     public static void main(String[] args) throws SQLException {
-        Map<String, icmit.dad.laborators.lab1.Abonent> abonents = null;
+        Map<String, Abonent> abonents = null;
         DBWork dbWork = DBWork.getInstance();
         try (Statement statement = dbWork.getConnection().createStatement()) {
             String query = "select contact.fullname, phone.phonenumber, dict_phonetype.name from contact \n" +
