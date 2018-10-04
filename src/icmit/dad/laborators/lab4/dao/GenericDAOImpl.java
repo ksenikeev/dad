@@ -39,5 +39,7 @@ public abstract class GenericDAOImpl<T extends Entity> implements GenericDAO<T> 
         return null;
     }
 
-    public abstract T getObjectFromResultSet(ResultSet rs);
+    public T getObjectFromResultSet(ResultSet rs){
+        return null;
+    }
 }

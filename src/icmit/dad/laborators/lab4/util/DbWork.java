@@ -19,19 +19,22 @@ public class DbWork {
     }
 
     public Connection getConnection() throws SQLException {
-        Properties p = getProperties();
-        String host = p.getProperty("db_ip");
-        String port = p.getProperty("db_port");
-        String url = "jdbc:postgresql://localhost:5432/dad";
         if (connection == null || connection.isClosed()){
-            connection = DriverManager.getConnection(url, "postgres", "post");
+            Properties p = getProperties();
+            String host = p.getProperty("db_ip");
+            String port = p.getProperty("db_port");
+            String dbName = p.getProperty("db_name");
+            String user = p.getProperty("db_user");
+            String password = p.getProperty("db_password");
+            String url = "jdbc:postgresql://"+host+":"+port +"/"+dbName;
+            connection = DriverManager.getConnection(url, user, password);
         }
         return connection;
     }
 
     private Properties getProperties(){
         Properties prop = new Properties();;
-        File f = new File("umms_sign.properties");
+        File f = new File("dad.properties");
         if (f.exists()) {
             try {
                 prop.load(new FileInputStream(f));

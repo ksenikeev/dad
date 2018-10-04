@@ -107,9 +107,4 @@ public class PhoneTypeDAO extends GenericDAOImpl<PhoneType> {
     public PhoneType getByCode(String code) {
         return null;
     }
-
-    @Override
-    public PhoneType getObjectFromResultSet(ResultSet rs) {
-        return null;
-    }
 }
