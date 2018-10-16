@@ -13,11 +13,22 @@ public class Main {
         String url = "jdbc:postgresql://localhost:5432/dad";
         Map<String, Abonent> abonents = null;
         try (Connection conn = DriverManager.getConnection(url, "postgres", "post")) {
+/*
             try (Statement statement = conn.createStatement()) {
                 String query = "select contact.fullname, phone.phonenumber, dict_phonetype.name from contact \n" +
                         "\tjoin phone on contact.id = phone.contact_id \n" +
                         "\tjoin dict_phonetype on dict_phonetype.id = phonetype_id;";
                 ResultSet resultSet = statement.executeQuery(query);
+                abonents = getAbonentsMap(resultSet);
+            }
+*/
+            String query = "select contact.fullname, phone.phonenumber, dict_phonetype.name from contact \n" +
+                    "\tjoin phone on contact.id = phone.contact_id \n" +
+                    "\tjoin dict_phonetype on dict_phonetype.id = phonetype_id where contact.id = ? ";
+            try (PreparedStatement statement = conn.prepareStatement(query)) {
+                statement.setLong(1, 3l);
+                ResultSet resultSet = statement.executeQuery();
+
                 abonents = getAbonentsMap(resultSet);
             }
         }

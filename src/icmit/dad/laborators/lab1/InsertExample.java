@@ -8,6 +8,7 @@ public class InsertExample {
         try (Connection conn = DriverManager.getConnection(url, "postgres", "post")) {
             Statement statement = conn.createStatement();
 
+
             ResultSet rs = statement.executeQuery("select nextval('contact_seq') as id");
             long id=0;
             if (rs.next()){ id = rs.getLong("id");}
