@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="242.0" prefWidth="322.0" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="icmit.dad.laborators.lab5.gui.controllers.DictEditController">
+   <children>
+      <Label layoutX="47.0" layoutY="55.0" text="id" />
+      <Label layoutX="42.0" layoutY="103.0" text="name" />
+      <Button fx:id="btnClose" layoutX="255.0" layoutY="191.0" mnemonicParsing="false" text="Close" />
+      <TextField fx:id="tfId" layoutX="90.0" layoutY="50.0" />
+      <TextField fx:id="tfName" layoutX="89.0" layoutY="98.0" />
+   </children>
+</AnchorPane>
