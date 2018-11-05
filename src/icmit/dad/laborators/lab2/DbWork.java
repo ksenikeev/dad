@@ -1,9 +1,11 @@
-package icmit.dad.laborators.lab1;
+package icmit.dad.laborators.lab2;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Properties;
 
 public class DbWork {

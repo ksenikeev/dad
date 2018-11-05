@@ -1,18 +1,20 @@
 package icmit.dad.laborators.lab1;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
- * Пример добавления строки данных в таблицу phone
+ * Пример удаления строки данных из phone
  */
-public class InsertExample {
+public class DeleteExample {
     public static void main(String[] args) {
         String url = "jdbc:postgresql://localhost:5432/dad";
         try (Connection conn = DriverManager.getConnection(url, "postgres", "post")) {
             Statement statement = conn.createStatement();
 
-            String sql=
-                "insert into phone (contact_id, phonetype_id, phonenumber) values (1 , 1, '+7902340459')";
+            String sql = "delete from phone where id = 3";
             statement.executeUpdate(sql);
             statement.close();
         } catch (SQLException e) {

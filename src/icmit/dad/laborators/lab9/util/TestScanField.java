@@ -10,19 +10,27 @@ public class TestScanField {
         try {
             Class cl = Class.forName("icmit.dad.laborators.lab9.domain.Contact");
 
-            Class superCl = cl.getSuperclass();
-            Field[] sfields = superCl.getDeclaredFields();
-            for(Field f : sfields){
-                if (f.isAnnotationPresent(Id.class))
-                    System.out.println(f.getName() + " is Id");
-                if (f.isAnnotationPresent(Column.class)) {
-                    System.out.println(f.getName() + " is column of table, name: ");
-                }
-            }
-
-
             if (cl.isAnnotationPresent(Table.class)){
-                System.out.println(cl.getCanonicalName() +" is table");
+                // Получаем аннотацию типа Table
+                Table t = (Table) cl.getAnnotation(Table.class);
+                // Выводим имя класса и атрибут name аннотации Table
+                System.out.println("Class "+ cl.getSimpleName() +" is table, name: " + t.name());
+
+                // Считываем все члены класса, начиная с членов родительского класса
+                Class superCl = cl.getSuperclass();
+                Field[] sfields = superCl.getDeclaredFields();
+
+                // Перебираем поля, определяем наличие известных аннотаций, выводим значение атрибута
+                for(Field f : sfields){
+                    if (f.isAnnotationPresent(Id.class))
+                        System.out.println(f.getName() + " is Id");
+                    if (f.isAnnotationPresent(Column.class)) {
+                        Column c = f.getAnnotation(Column.class);
+                        System.out.println(f.getName() + " is column of table, name: "+c.name());
+                    }
+                }
+
+                // Перебираем поля, определяем наличие известных аннотаций, выводим значение атрибута
                 Field[] fields = cl.getDeclaredFields();
                 for(Field f : fields){
                     if (f.isAnnotationPresent(Id.class))
@@ -34,11 +42,8 @@ public class TestScanField {
                 }
 
             }
-
-
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
     }
 }

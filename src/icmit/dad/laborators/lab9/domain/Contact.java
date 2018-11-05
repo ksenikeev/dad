@@ -3,7 +3,7 @@ package icmit.dad.laborators.lab9.domain;
 import icmit.dad.laborators.lab9.annotations.Column;
 import icmit.dad.laborators.lab9.annotations.Table;
 
-@Table(name = "contact", generator = "contact_seq")
+@Table(name = "contact1", generator = "contact_seq")
 public class Contact extends Entity {
 
     @Column(name = "fullname")
