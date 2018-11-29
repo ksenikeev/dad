@@ -14,7 +14,7 @@ public class DeleteExample {
         try (Connection conn = DriverManager.getConnection(url, "postgres", "post")) {
             Statement statement = conn.createStatement();
 
-            String sql = "delete from phone where id = 3";
+            String sql = "delete from phone where id = 6";
             statement.executeUpdate(sql);
             statement.close();
         } catch (SQLException e) {

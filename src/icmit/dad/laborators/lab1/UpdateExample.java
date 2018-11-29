@@ -9,8 +9,9 @@ public class UpdateExample {
         try(Connection conn = DriverManager.getConnection(url, "postgres", "post")) {
 
             Statement statement = conn.createStatement();
-            statement.executeUpdate("update phone set phonenumber= '+7999990959' where id = 4 ");
+            statement.executeUpdate("update phone set phonenumber= '+7999975555' where id = 4 ");
             statement.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
