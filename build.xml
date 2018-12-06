@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="dad" default="war_apps" basedir=".">
+    <property name="lib.dir" value="lib"/>
+    <property name="bin.dir" value="out/production/dad"/>
+    <property name="webapps" value="src/icmit/dad/laborators/lab13/web_content"/>
+    <target name="war_apps">
+        <delete file="webdb.war"/>
+        <war warfile="webdb.war" webxml="${webapps}/WEB-INF/web.xml">
+            <webinf dir="${webapps}/WEB-INF">
+                <include name="**/*"/>
+            </webinf>
+            <fileset dir="${webapps}" includes="**/*"/>
+            <lib dir="${lib.dir}">
+                <include name="*.jar"/>
+                <exclude name="servlet-api.jar"/>
+            </lib>
+            <classes dir="${bin.dir}">
+                <exclude name="{bin.dir}/icmit/dad/laborators/lab12/*"/>
+            </classes>
+        </war>
+    </target>
+
+</project>
