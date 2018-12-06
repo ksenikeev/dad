@@ -29,7 +29,7 @@ public class WriteServlet extends HttpServlet {
             name = req.getParameter(  "name");
             value = req.getParameter("value");
             if(name != null && value!=null){
-                session.setAttribute(name,value);
+                session.setAttribute (name,value);
                 result = "ok";
                 System.out.println("attribute saved");
             }

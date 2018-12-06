@@ -1,6 +1,6 @@
-package icmit.dad.laborators.lab4.domain;
+package icmit.dad.laborators.lab2.domain;
 
-public class Contact extends Entity{
+public class Contact extends Entity {
     private String fullName;
     private String lastName;
     private String firstName;

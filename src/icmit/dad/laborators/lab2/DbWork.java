@@ -33,7 +33,7 @@ public class DbWork {
 
     private Properties getProperties(){
         Properties prop = new Properties();;
-        File f = new File("umms_sign.properties");
+        File f = new File("dad.properties");
         if (f.exists()) {
             try {
                 prop.load(new FileInputStream(f));

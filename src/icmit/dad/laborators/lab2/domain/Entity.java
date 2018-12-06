@@ -1,4 +1,4 @@
-package icmit.dad.laborators.lab4.domain;
+package icmit.dad.laborators.lab2.domain;
 
 public abstract class Entity {
     protected Long id;
