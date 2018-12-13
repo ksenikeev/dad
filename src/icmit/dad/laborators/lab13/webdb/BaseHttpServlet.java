@@ -7,8 +7,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/basehttp")
+@WebServlet(value = "/basehttp", loadOnStartup = 1)
 public class BaseHttpServlet extends HttpServlet {
+
+    @Override
+    public void init(){
+        System.out.println("Start web app!");
+    }
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
@@ -21,4 +26,11 @@ public class BaseHttpServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
+
+
+    @Override
+    public void destroy(){
+        System.out.println("Destroying web app!");
+    }
+
 }

@@ -1,6 +1,6 @@
-package icmit.dad.laborators.lab4.domain;
+package icmit.dad.laborators.lab2.domain;
 
-public class PhoneType extends Entity{
+public class PhoneType extends Entity {
     private String name;
     private String fullName;
     private String code;
