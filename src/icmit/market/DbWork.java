@@ -1,51 +1,30 @@
-package icmit.dad.laborators.lab9.util;
+package icmit.market;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.sql.*;
-import java.util.Properties;
 
 public class DbWork {
 
-    private static DbWork dbWork;
-    private Connection connection;
+    private static volatile Connection connection;
 
-    public static DbWork getInstance(){
-        if (dbWork==null){
-            dbWork = new DbWork();
-        }
-        return dbWork;
-    }
-
-    public Connection getConnection() throws SQLException {
-        if (connection == null || connection.isClosed()){
-            Properties p = getProperties();
-            String host = p.getProperty("db_ip");
-            String port = p.getProperty("db_port");
-            String dbName = p.getProperty("db_name");
-            String user = p.getProperty("db_user");
-            String password = p.getProperty("db_password");
-            String url = "jdbc:postgresql://"+host+":"+port +"/"+dbName;
-            connection = DriverManager.getConnection(url, user, password);
-        }
-        return connection;
-    }
-
-    private Properties getProperties(){
-        Properties prop = new Properties();;
-        File f = new File("dad.properties");
-        if (f.exists()) {
-            try {
-                prop.load(new FileInputStream(f));
-            } catch (IOException e) {
-                e.printStackTrace();
+    public static Connection getInstance(){
+        Connection con = connection;
+        if (con==null){
+            synchronized(DbWork.class) {
+                con = connection;
+                if (con==null){
+                    String url = "jdbc:postgresql://localhost:5432/market";
+                    try {
+                        con = connection = DriverManager.getConnection(url, "postgres", "post");
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         }
-        return prop;
+        return con;
     }
 
-    public void close(){
+    public static synchronized void close(){
         try {
             connection.close();
         } catch (SQLException e) {
@@ -53,12 +32,12 @@ public class DbWork {
         }
     }
 
-    public Long generateId(String sequenceName){
+    public static Long generateId(String sequenceName){
 
         Long id = null;
         String sql = "select nextval( ? ) as id";
 
-        try (PreparedStatement st = getConnection().prepareStatement(sql)){
+        try (PreparedStatement st = connection.prepareStatement(sql)){
 
             st.setString(1, sequenceName);
 

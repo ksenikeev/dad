@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 
 @WebServlet("/basket")
 public class BasketServlet extends HttpServlet {
@@ -33,4 +34,6 @@ public class BasketServlet extends HttpServlet {
         }
 
     }
+
+
 }
