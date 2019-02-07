@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @WebServlet("/merch")
@@ -23,31 +24,30 @@ public class MerchServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response){
 
         Connection con = DbWork.getInstance();
-        List<String> merchList = new ArrayList<String>();
+        List<String> merchList = new ArrayList<>();
 
+        try{
+            String sql = "select * from price";
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()){
+                String id = rs.getString("id");
+                String name = rs.getString("name");
+                String price = rs.getString("pricevalue");
+                String available = rs.getBoolean("available")?"Есть в наличии":"Нет в наличии";
 
-           try{
-                String sql = "select * from price";
-                Statement st = con.createStatement();
-                ResultSet rs = st.executeQuery(sql);
-                while (rs.next()){
-                    String id = rs.getString("id");
-                    String name = rs.getString("name");
-                    String price = rs.getString("pricevalue");
-                    String available = rs.getBoolean("available")?"Есть в наличии":"Нет в наличии";
+                merchList.add("id: "+id+", name: "+name + ", price: "+price);
+            }
 
-                    merchList.add("id: "+id+", name: "+name + ", price: "+price);
-                }
-
-               request.setAttribute("merchList", merchList);
-                request.getRequestDispatcher("merch.ftlh").forward(request,response);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } catch (ServletException e) {
-               e.printStackTrace();
-           } catch (IOException e) {
-               e.printStackTrace();
-           }
-
+            request.setAttribute("date", new Date());
+            request.setAttribute("merchList", merchList);
+            request.getRequestDispatcher("merch.ftlh").forward(request,response);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ServletException e) {
+           e.printStackTrace();
+        } catch (IOException e) {
+           e.printStackTrace();
+        }
     }
 }
