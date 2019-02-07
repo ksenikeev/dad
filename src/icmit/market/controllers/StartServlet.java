@@ -1,4 +1,6 @@
-package icmit.market;
+package icmit.market.controllers;
+
+import icmit.market.DbWork;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

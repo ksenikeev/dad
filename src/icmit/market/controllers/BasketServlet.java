@@ -1,4 +1,4 @@
-package icmit.market;
+package icmit.market.controllers;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
