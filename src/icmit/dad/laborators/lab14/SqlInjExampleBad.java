@@ -6,7 +6,7 @@ import java.util.Scanner;
 /**
  *
  */
-public class SqlInjExample {
+public class SqlInjExampleBad {
     public static void main(String[] args) {
 
         String username="";

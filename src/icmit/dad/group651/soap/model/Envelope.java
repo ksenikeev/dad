@@ -1,4 +1,4 @@
-package icmit.dad.group651.soap;
+package icmit.dad.group651.soap.model;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;

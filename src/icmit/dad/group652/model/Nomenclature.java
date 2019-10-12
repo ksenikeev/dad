@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 public class Nomenclature {
-    
+
     private UUID uuid;
     private String productName;
     private Date firstDate;

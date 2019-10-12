@@ -1,4 +1,4 @@
-package icmit.dad.group651.soap;
+package icmit.dad.group651.soap.model;
 
 public class Header {
     String role = "";

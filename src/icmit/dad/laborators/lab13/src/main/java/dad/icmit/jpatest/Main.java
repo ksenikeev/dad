@@ -1,4 +1,4 @@
-package dad.icmit.jpatest;
+package icmit.dad.laborators.lab13.src.main.java.dad.icmit.jpatest;
 
 import dad.icmit.jpatest.domain.Merchandise;
 

@@ -11,7 +11,7 @@ import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.util.Date;
 
-public class SOAPMain {
+public class XMLMain {
 
     public static void main(String[] args) {
         //createEnveope();

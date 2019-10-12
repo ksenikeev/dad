@@ -6,7 +6,7 @@ import java.util.Scanner;
 /**
  *
  */
-public class SqlInjExampleBad {
+public class SqlInjExampleGood {
     public static void main(String[] args) {
 
         String username="";
@@ -24,10 +24,13 @@ public class SqlInjExampleBad {
         String url = "jdbc:postgresql://localhost:5432/sqlinj";
         try (Connection conn = DriverManager.getConnection(url, "postgres", "post")) {
 
-            Statement s = conn.createStatement();
+            PreparedStatement s = conn.prepareStatement("select * from users where " +
+                            " username = ? and password = ?");
 
-            ResultSet rs = s.executeQuery("select * from users where username = '" +
-                    username + "' and password = '" + password + "'");
+            s.setString(1, username);
+            s.setString(2, password);
+
+            ResultSet rs = s.executeQuery();
 
             if (rs.next()) {
                 System.out.println("autorisation success!");
