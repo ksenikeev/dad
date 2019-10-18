@@ -3,7 +3,6 @@ package icmit.dad.group651.soap;
 import icmit.dad.group651.soap.model.Body;
 import icmit.dad.group651.soap.model.Envelope;
 import icmit.dad.group651.soap.model.Header;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -14,6 +13,7 @@ import java.util.Date;
 public class XMLMain {
 
     public static void main(String[] args) {
+
         //createEnveope();
 
         Envelope envelope = readEnvelope();
@@ -21,6 +21,7 @@ public class XMLMain {
     }
 
     public static void createEnveope() {
+
         Envelope envelope = new Envelope();
         Header header = new Header();
         Body body = new Body();

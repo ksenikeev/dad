@@ -4,8 +4,11 @@ import icmit.dad.group651.soap.model.Content;
 
 import javax.xml.bind.annotation.XmlElement;
 import java.util.Date;
+import java.util.UUID;
 
 public class Nomenclature extends Content {
+
+    private UUID uid;
 
     private String name;
 
@@ -47,6 +50,18 @@ public class Nomenclature extends Content {
 
     public void setModifyDate(Date modifyDate) {
         this.modifyDate = modifyDate;
+    }
+
+    @XmlElement
+    public UUID getUid() {
+        if (uid == null) {
+             uid = UUID.randomUUID();
+        }
+        return uid;
+    }
+
+    public void setUid(UUID uid) {
+        this.uid = uid;
     }
 
     @Override
