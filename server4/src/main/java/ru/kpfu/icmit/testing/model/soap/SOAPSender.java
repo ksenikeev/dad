@@ -1,4 +1,4 @@
-package icmit.dad.group651.soap;
+package ru.kpfu.icmit.testing.model.soap;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,8 +13,7 @@ public class SOAPSender {
 
 
         try {
-            //URL url = new URL("http://185.20.227.163:8080/testing/addnomenclature");
-            URL url = new URL("http://localhost:8080/testing/addnomenclature");
+            URL url = new URL("http://185.20.227.163:8080/addnomenclature");
             HttpURLConnection connection = (HttpURLConnection)url.openConnection();
 
             connection.setRequestMethod("POST");
@@ -28,14 +27,13 @@ public class SOAPSender {
                 byte[] buf = new byte[2048];
                 int r = 0;
                 while ((r = fis.read(buf)) != -1) {
-                    os.write(buf,0,r);
+                    os.write(buf);
                 }
 
                 os.flush();
             }
 
-            int rcode = connection.getResponseCode();
-            System.out.println(rcode);
+//            int rcode = connection.getResponseCode();
 
         } catch (IOException e) {
             e.printStackTrace();

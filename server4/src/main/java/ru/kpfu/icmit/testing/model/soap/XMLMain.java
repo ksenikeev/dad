@@ -1,8 +1,9 @@
-package icmit.dad.group651.soap;
+package ru.kpfu.icmit.testing.model.soap;
 
-import icmit.dad.group651.soap.model.Body;
-import icmit.dad.group651.soap.model.Envelope;
-import icmit.dad.group651.soap.model.Header;
+import ru.kpfu.icmit.testing.model.soap.model.Body;
+import ru.kpfu.icmit.testing.model.soap.model.Envelope;
+import ru.kpfu.icmit.testing.model.soap.model.Header;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -16,11 +17,8 @@ public class XMLMain {
 
         //createEnveope();
 
-        //Envelope envelope = readEnvelope();
-        //System.out.println(envelope);
-        SOAPSender sender = new SOAPSender();
-
-        sender.sendNomenclature(new File("envelope.xml"));
+        Envelope envelope = readEnvelope();
+        System.out.println(envelope);
     }
 
     public static void createEnveope() {

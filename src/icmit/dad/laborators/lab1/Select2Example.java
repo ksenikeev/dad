@@ -15,7 +15,7 @@ public class Select2Example {
             Statement s = conn.createStatement();
 
             ResultSet rs = s.executeQuery("SELECT contact.fullname, phone.phonenumber FROM " +
-                    "contact JOIN phone ON contact.id = phone.contact_id");
+                    "contact Left JOIN phone ON contact.id = phone.contact_id");
             while (rs.next()){
                 System.out.print(rs.getString("fullname")+", ");
                 System.out.println(rs.getString("phonenumber"));
