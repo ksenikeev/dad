@@ -1,9 +1,6 @@
 package icmit.dad.group651.soap;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -13,8 +10,8 @@ public class SOAPSender {
 
 
         try {
-            //URL url = new URL("http://185.20.227.163:8080/testing/addnomenclature");
-            URL url = new URL("http://localhost:8080/testing/addnomenclature");
+            URL url = new URL("http://185.20.227.163:8080/server4/addnomenclature");
+            //URL url = new URL("http://localhost:8080/server4/addnomenclature");
             HttpURLConnection connection = (HttpURLConnection)url.openConnection();
 
             connection.setRequestMethod("POST");
@@ -36,6 +33,17 @@ public class SOAPSender {
 
             int rcode = connection.getResponseCode();
             System.out.println(rcode);
+
+            String env = "";
+            try (BufferedReader bf = new BufferedReader( new InputStreamReader(connection.getInputStream()))) {
+
+                while (bf.ready()) {
+                    env += bf.readLine();
+                }
+
+                System.out.println(env);
+            }
+
 
         } catch (IOException e) {
             e.printStackTrace();

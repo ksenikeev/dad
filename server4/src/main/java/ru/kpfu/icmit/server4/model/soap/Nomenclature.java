@@ -1,19 +1,27 @@
-package ru.kpfu.icmit.testing.model.soap;
+package ru.kpfu.icmit.server4.model.soap;
 
-import ru.kpfu.icmit.testing.model.soap.model.Content;
-
+import ru.kpfu.icmit.server4.model.soap.model.Content;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
 import java.util.Date;
 import java.util.UUID;
 
+@Entity
 public class Nomenclature extends Content {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "nomenclatureIdGenerator")
+    @SequenceGenerator(name = "nomenclatureIdGenerator", sequenceName = "nomenclature_seq", allocationSize=1)
+    Long id;
 
     private UUID uid;
 
     private String name;
 
+    @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
 
+    @Temporal(TemporalType.TIMESTAMP)
     private Date modifyDate;
 
     public Nomenclature() {
@@ -25,7 +33,15 @@ public class Nomenclature extends Content {
         this.modifyDate = modifyDate;
     }
 
-    @XmlElement
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    //@XmlElement
     public String getName() {
         return name;
     }
@@ -34,7 +50,7 @@ public class Nomenclature extends Content {
         this.name = name;
     }
 
-    @XmlElement
+    //@XmlElement
     public Date getCreateDate() {
         return createDate;
     }
@@ -43,7 +59,7 @@ public class Nomenclature extends Content {
         this.createDate = createDate;
     }
 
-    @XmlElement
+    //@XmlElement
     public Date getModifyDate() {
         return modifyDate;
     }
@@ -52,7 +68,7 @@ public class Nomenclature extends Content {
         this.modifyDate = modifyDate;
     }
 
-    @XmlElement
+    //@XmlElement
     public UUID getUid() {
         if (uid == null) {
              uid = UUID.randomUUID();

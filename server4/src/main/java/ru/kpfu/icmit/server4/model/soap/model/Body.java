@@ -1,6 +1,7 @@
-package ru.kpfu.icmit.testing.model.soap.model;
+package ru.kpfu.icmit.server4.model.soap.model;
 
-import ru.kpfu.icmit.testing.model.soap.Nomenclature;
+import ru.kpfu.icmit.server4.model.soap.Nomenclature;
+import ru.kpfu.icmit.server4.model.soap.NomenclatureList;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElements;
@@ -9,7 +10,8 @@ public class Body {
     private Content content;
 
     @XmlElements({
-            @XmlElement(name = "nomenclature", type = Nomenclature.class)
+            @XmlElement(name = "nomenclature", type = Nomenclature.class),
+            @XmlElement(name = "nomenclatures", type = NomenclatureList.class)
     })
     public Content getContent() {
         return content;

@@ -1,4 +1,4 @@
-package ru.kpfu.icmit.testing.model.soap;
+package ru.kpfu.icmit.server4.model.soap;
 
 import java.io.File;
 import java.io.FileInputStream;

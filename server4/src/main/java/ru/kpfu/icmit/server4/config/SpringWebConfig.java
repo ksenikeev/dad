@@ -1,4 +1,4 @@
-package ru.kpfu.icmit.testing.config;
+package ru.kpfu.icmit.server4.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan({ "ru.kpfu.icmit.testing" })
+@ComponentScan({ "ru.kpfu.icmit.server4" })
 public class SpringWebConfig implements WebMvcConfigurer {
 
     @Override

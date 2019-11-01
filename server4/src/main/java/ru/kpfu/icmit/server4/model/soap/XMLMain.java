@@ -1,8 +1,8 @@
-package ru.kpfu.icmit.testing.model.soap;
+package ru.kpfu.icmit.server4.model.soap;
 
-import ru.kpfu.icmit.testing.model.soap.model.Body;
-import ru.kpfu.icmit.testing.model.soap.model.Envelope;
-import ru.kpfu.icmit.testing.model.soap.model.Header;
+import ru.kpfu.icmit.server4.model.soap.model.Body;
+import ru.kpfu.icmit.server4.model.soap.model.Envelope;
+import ru.kpfu.icmit.server4.model.soap.model.Header;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
