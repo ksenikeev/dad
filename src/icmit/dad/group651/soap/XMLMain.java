@@ -14,7 +14,7 @@ public class XMLMain {
 
     public static void main(String[] args) {
 
-        //createEnveope();
+        createEnveope();
 
         //Envelope envelope = readEnvelope();
         //System.out.println(envelope);
@@ -31,7 +31,7 @@ public class XMLMain {
         envelope.setHeader(header);
         envelope.setBody(body);
 
-        Nomenclature nomenclature = new Nomenclature("Холодильник", new Date(), new Date());
+        Nomenclature nomenclature = new Nomenclature("Холодильник", null, null);
 
         body.setContent(nomenclature);
 

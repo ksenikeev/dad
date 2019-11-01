@@ -26,6 +26,7 @@ public class SpringWebConfig implements WebMvcConfigurer {
         resolver.setCache(true);
         resolver.setPrefix("");
         resolver.setSuffix(".ftl");
+        resolver.setContentType("text/html; charset=utf-8");
         return resolver;
     }
 
@@ -33,7 +34,7 @@ public class SpringWebConfig implements WebMvcConfigurer {
     public FreeMarkerConfigurer freemarkerConfig() {
         FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
         freeMarkerConfigurer.setTemplateLoaderPath("/WEB-INF/templates/");
-
+        freeMarkerConfigurer.setDefaultEncoding("UTF-8");
         //freeMarkerConfigurer.setTemplateLoaderPath("classpath:/templates/");
         return freeMarkerConfigurer;
     }

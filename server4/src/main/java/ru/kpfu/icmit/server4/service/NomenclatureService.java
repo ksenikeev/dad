@@ -17,4 +17,8 @@ public class NomenclatureService {
         return nomenclatureRepository.getNomenclature(dateFrom);
     }
 
+    public Nomenclature save(Nomenclature nomenclature) {
+        return nomenclatureRepository.save(nomenclature);
+    }
+
 }

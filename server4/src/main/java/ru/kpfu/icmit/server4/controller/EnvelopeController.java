@@ -25,10 +25,15 @@ public class EnvelopeController {
     @ResponseBody
     public Envelope addNomenclature(@RequestBody Envelope envelope) {
 
-        System.out.println("envelope" + envelope);
+        System.out.println("envelope: " + envelope);
 
         if (envelope != null) {
-            System.out.println(envelope.getBody().getContent());
+            Nomenclature nomenclature = (Nomenclature) envelope.getBody().getContent();
+
+            nomenclature.setCreateDate(new Date());
+            nomenclature.setModifyDate(new Date());
+            nomenclature = nomenclatureService.save(nomenclature);
+            envelope.getBody().setContent(nomenclature);
         }
         return envelope;
     }
@@ -39,7 +44,8 @@ public class EnvelopeController {
 
         Date date = null;
         try {
-            date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2019-01-01");
+            date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SXXX").
+                    parse("2019-01-01T00:00:00.0+03:00");
         } catch (ParseException e) {
             e.printStackTrace();
         }

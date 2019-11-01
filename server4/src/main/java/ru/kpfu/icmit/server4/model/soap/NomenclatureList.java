@@ -10,8 +10,6 @@ import java.util.UUID;
 
 public class NomenclatureList extends Content {
 
-    @XmlElementWrapper(name = "nomenclatures")
-    @XmlElement(name = "nomenclature")
     private List<Nomenclature> nomenclatureList;
 
     public NomenclatureList(List<Nomenclature> nomenclatures) {
@@ -21,6 +19,8 @@ public class NomenclatureList extends Content {
     public NomenclatureList() {
     }
 
+    @XmlElementWrapper(name = "nomenclatures")
+    @XmlElement(name = "nomenclature")
     public List<Nomenclature> getNomenclatureList() {
         return nomenclatureList;
     }

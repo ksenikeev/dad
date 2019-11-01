@@ -3,6 +3,7 @@ package ru.kpfu.icmit.server4.repository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 import ru.kpfu.icmit.server4.model.soap.Nomenclature;
 import java.util.Date;
 import java.util.List;
@@ -15,4 +16,7 @@ public interface NomenclatureRepository extends CrudRepository<Nomenclature, Lon
 
     @Query("select n from Nomenclature n where modifyDate >= :dateFrom ")
     List<Nomenclature> getNomenclature(@Param("dateFrom") Date dateFrom);
+
+    @Transactional
+    Nomenclature save(Nomenclature nomenclature);
 }
