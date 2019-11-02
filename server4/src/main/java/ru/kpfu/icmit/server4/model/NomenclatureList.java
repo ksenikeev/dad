@@ -1,12 +1,11 @@
-package ru.kpfu.icmit.server4.model.soap;
+package ru.kpfu.icmit.server4.model;
 
-import ru.kpfu.icmit.server4.model.soap.model.Content;
+import ru.kpfu.icmit.server4.model.Nomenclature;
+import ru.kpfu.icmit.server4.model.soap.Content;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
-import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 public class NomenclatureList extends Content {
 

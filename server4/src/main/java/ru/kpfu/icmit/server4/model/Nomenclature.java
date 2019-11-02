@@ -1,8 +1,7 @@
-package ru.kpfu.icmit.server4.model.soap;
+package ru.kpfu.icmit.server4.model;
 
-import ru.kpfu.icmit.server4.model.soap.model.Content;
+import ru.kpfu.icmit.server4.model.soap.Content;
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlElement;
 import java.util.Date;
 import java.util.UUID;
 

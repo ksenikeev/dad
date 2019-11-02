@@ -3,13 +3,11 @@ package ru.kpfu.icmit.server4.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import ru.kpfu.icmit.server4.model.soap.Nomenclature;
-import ru.kpfu.icmit.server4.model.soap.NomenclatureList;
-import ru.kpfu.icmit.server4.model.soap.model.Body;
-import ru.kpfu.icmit.server4.model.soap.model.Envelope;
-import ru.kpfu.icmit.server4.repository.NomenclatureRepository;
+import ru.kpfu.icmit.server4.model.Nomenclature;
+import ru.kpfu.icmit.server4.model.NomenclatureList;
+import ru.kpfu.icmit.server4.model.soap.Body;
+import ru.kpfu.icmit.server4.model.soap.Envelope;
 import ru.kpfu.icmit.server4.service.NomenclatureService;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;

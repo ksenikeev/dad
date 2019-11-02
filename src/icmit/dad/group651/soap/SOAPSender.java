@@ -10,7 +10,7 @@ public class SOAPSender {
 
 
         try {
-            URL url = new URL("http://185.20.227.163/:8080/server4/addnomenclature");
+            URL url = new URL("http://185.20.227.163:8080/server4/addnomenclature");
             //URL url = new URL("http://localhost:8080/server4/addnomenclature");
             HttpURLConnection connection = (HttpURLConnection)url.openConnection();
 

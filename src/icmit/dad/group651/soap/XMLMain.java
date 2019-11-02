@@ -31,7 +31,7 @@ public class XMLMain {
         envelope.setHeader(header);
         envelope.setBody(body);
 
-        Nomenclature nomenclature = new Nomenclature("Холодильник", null, null);
+        Nomenclature nomenclature = new Nomenclature("Уголь", null, null);
 
         body.setContent(nomenclature);
 
