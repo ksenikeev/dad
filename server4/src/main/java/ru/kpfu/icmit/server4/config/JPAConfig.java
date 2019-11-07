@@ -18,6 +18,7 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @ComponentScan("ru.kpfu.icmit.server4")
+//@EntityScan("ru.kpfu.icmit.server4.model")
 @PropertySource("classpath:db.properties")
 @EnableJpaRepositories("ru.kpfu.icmit.server4.repository")
 public class JPAConfig {
