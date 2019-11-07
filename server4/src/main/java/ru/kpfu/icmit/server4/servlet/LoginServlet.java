@@ -11,7 +11,6 @@ import java.io.IOException;
 public class LoginServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
         try {
             request.getRequestDispatcher("login.ftlh").forward(request, response);
         } catch (ServletException e) {
