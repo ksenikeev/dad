@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Envelope>
+    <Body>
+        <nomenclature>
+            <name>Ж/Д вагон</name>
+            <uid>47ba91a9-4c59-4800-b11a-3b508951f27a</uid>
+        </nomenclature>
+    </Body>
+    <Header/>
+</Envelope>

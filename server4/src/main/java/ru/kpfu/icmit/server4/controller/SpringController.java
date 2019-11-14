@@ -3,15 +3,14 @@ package ru.kpfu.icmit.server4.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import ru.kpfu.icmit.server4.model.Nomenclature;
 import ru.kpfu.icmit.server4.service.NomenclatureService;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class SpringController {
@@ -38,6 +37,32 @@ public class SpringController {
         System.out.println("nomenclatures" + nomenclatures);
 
         return "/dict/nomenclature";
+    }
+
+
+    @RequestMapping(value = "/addnomenclature", method = RequestMethod.GET)
+    public String addNomenclature(@ModelAttribute("model") ModelMap model) {
+
+        return "/dict/addnomenclature";
+    }
+
+    @RequestMapping(value = "/addnewnom", method = RequestMethod.POST)
+    public String addNewNom(@ModelAttribute("model") ModelMap model,
+                            @RequestParam Map<String,String> body) {
+        System.out.println(body);
+        String name = body.get("name");
+
+        model.put("nomname", name !=null? name : "yyruytuyt");
+
+
+        // отправить  в Ц БД
+        // получить ответ
+        // добавить в Л БД
+
+
+        System.out.println(name);
+
+        return "/dict/nomsuccess";
     }
 
 }

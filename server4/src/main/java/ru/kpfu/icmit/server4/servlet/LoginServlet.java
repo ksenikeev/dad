@@ -12,7 +12,7 @@ public class LoginServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
-            request.getRequestDispatcher("login.ftlh").forward(request, response);
+            request.getRequestDispatcher("dict/login.ftlh").forward(request, response);
         } catch (ServletException e) {
             e.printStackTrace();
         }

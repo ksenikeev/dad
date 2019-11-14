@@ -32,7 +32,7 @@ public class SOAPMain {
         envelope.setHeader(header);
         envelope.setBody(body);
 
-        Nomenclature nomenclature = new Nomenclature("Сталь", null, null);
+        Nomenclature nomenclature = new Nomenclature("Ж/Д вагон", null, null);
 
         body.setContent(nomenclature);
 

@@ -14,7 +14,7 @@ public interface NomenclatureRepository extends CrudRepository<Nomenclature, Lon
     @Query("select n from Nomenclature n where uid = :uid ")
     Nomenclature findByUid(@Param("uid") UUID uid);
 
-    @Query("select n from Nomenclature n ")
+    @Query("select n from Nomenclature n where modifyDate >= :dateFrom ")
     List<Nomenclature> getNomenclature(@Param("dateFrom") Date dateFrom);
 
     @Transactional
