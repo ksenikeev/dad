@@ -16,7 +16,7 @@
 
 <div id="content">
 
-	<form action="/server4/addnewnom" method="post">
+	<form action="/server4/addnewnom" method="post" enctype="application/x-www-form-urlencoded">
 
 		<label>Название</label>
 		<input type="text" name="name"/>

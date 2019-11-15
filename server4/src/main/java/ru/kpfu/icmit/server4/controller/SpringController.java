@@ -6,6 +6,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import ru.kpfu.icmit.server4.model.Nomenclature;
 import ru.kpfu.icmit.server4.service.NomenclatureService;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -47,12 +50,14 @@ public class SpringController {
     }
 
     @RequestMapping(value = "/addnewnom", method = RequestMethod.POST)
-    public String addNewNom(@ModelAttribute("model") ModelMap model,
-                            @RequestParam Map<String,String> body) {
-        System.out.println(body);
-        String name = body.get("name");
+    public String addNewNom(
+            @ModelAttribute("model") ModelMap model,
+            @ModelAttribute Nomenclature body
+                            ) {
+        System.out.println(body.getName());
+        String name = body.getName();
 
-        model.put("nomname", name !=null? name : "yyruytuyt");
+        model.put("nomname", name != null ? name : "no name");
 
 
         // отправить  в Ц БД
@@ -65,4 +70,15 @@ public class SpringController {
         return "/dict/nomsuccess";
     }
 
+    public class NomenclatureForm {
+        public String name;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+    }
 }

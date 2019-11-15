@@ -129,21 +129,6 @@ ALTER SEQUENCE public.nomenclature_seq OWNED BY public.nomenclature.id;
 
 
 --
--- TOC entry 195 (class 1259 OID 1462151)
--- Name: nomenclature_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public.nomenclature_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.nomenclature_seq OWNER TO postgres;
-
---
 -- TOC entry 189 (class 1259 OID 1462081)
 -- Name: offer; Type: TABLE; Schema: public; Owner: postgres
 --
@@ -236,7 +221,7 @@ CREATE TABLE public.request (
     organization_id bigint NOT NULL,
     nomenclature_id bigint NOT NULL,
     requestdate timestamp with time zone,
-    detail character varying(1024)
+    detail character varying(1024),
     countofproduct int,
     deadlineofrequest date,
     isstatus boolean,
