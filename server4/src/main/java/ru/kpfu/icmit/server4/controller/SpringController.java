@@ -8,12 +8,11 @@ import ru.kpfu.icmit.server4.model.Nomenclature;
 import ru.kpfu.icmit.server4.service.NomenclatureService;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class SpringController {
@@ -22,19 +21,23 @@ public class SpringController {
     @Autowired
     private NomenclatureService nomenclatureService;
 
-    @RequestMapping(value = "/nomenclature", method = RequestMethod.GET)
-    public String getNomenclatureList(@ModelAttribute("model") ModelMap model) {
+    @RequestMapping(value = "/nomenclature")
+    public String getNomenclatureList(@RequestParam String dateFrom, @ModelAttribute("model") ModelMap model) {
+
+        if (dateFrom == null || dateFrom.length() == 0) {
+            dateFrom = "2019-01-01T00:00:00.0+03:00";
+        }
 
         Date date = null;
         try {
-            date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SXXX").parse("2019-01-01T00:00:00.0+03:00");
+            date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SXXX").parse(dateFrom);
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
         List<Nomenclature> nomenclatures = nomenclatureService.getNomenclature(date);
 
-        model.addAttribute("reqdate", "2019-01-01T00:00:00.0+03:00");
+        model.addAttribute("reqdate", dateFrom);
         model.addAttribute("nomenclatures", nomenclatures);
 
         System.out.println("nomenclatures" + nomenclatures);
