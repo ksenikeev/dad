@@ -2,28 +2,35 @@ package ru.kpfu.icmit.server4.model;
 
 import org.hibernate.annotations.Type;
 import ru.kpfu.icmit.server4.model.soap.Content;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
 
 @Entity
-public class Offer extends Content {
-
+@Table(name = "request")
+public class Request extends Content {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "contractIdGenerator")
-    @SequenceGenerator(name = "offerIdGenerator", sequenceName = "offer_seq", allocationSize=1)
-    Long id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "requestGenerator")
+    @SequenceGenerator(name = "requestGenerator", sequenceName = "request_seq", allocationSize = 1)
+    private Long id;
 
-    @ManyToOne
-    private Organization organization;
+    @Type(type="pg-uuid")
+    private UUID uid;
 
     @ManyToOne
     private Nomenclature nomenclature;
 
-    private double priceOfProduct;
+    @ManyToOne
+    private Organization organization;
 
-    private int countOfProduct;
+    @Column
+    private Float priceOfProduct;
 
+    @Column
+    private Float countOfProduct;
+
+    @Column
     private String unitCode;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -35,9 +42,6 @@ public class Offer extends Content {
     @Temporal(TemporalType.DATE)
     private Date dateOfPerformance;
 
-    @Type(type="pg-uuid")
-    private UUID uid;
-
     public Long getId() {
         return id;
     }
@@ -46,12 +50,12 @@ public class Offer extends Content {
         this.id = id;
     }
 
-    public Organization getOrganization() {
-        return organization;
+    public UUID getUid() {
+        return uid;
     }
 
-    public void setOrganization(Organization organization) {
-        this.organization = organization;
+    public void setUid(UUID uid) {
+        this.uid = uid;
     }
 
     public Nomenclature getNomenclature() {
@@ -62,19 +66,27 @@ public class Offer extends Content {
         this.nomenclature = nomenclature;
     }
 
-    public double getPriceOfProduct() {
+    public Organization getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
+    }
+
+    public Float getPriceOfProduct() {
         return priceOfProduct;
     }
 
-    public void setPriceOfProduct(double priceOfProduct) {
+    public void setPriceOfProduct(Float priceOfProduct) {
         this.priceOfProduct = priceOfProduct;
     }
 
-    public int getCountOfProduct() {
+    public Float getCountOfProduct() {
         return countOfProduct;
     }
 
-    public void setCountOfProduct(int countOfProduct) {
+    public void setCountOfProduct(Float countOfProduct) {
         this.countOfProduct = countOfProduct;
     }
 
@@ -108,13 +120,5 @@ public class Offer extends Content {
 
     public void setDateOfPerformance(Date dateOfPerformance) {
         this.dateOfPerformance = dateOfPerformance;
-    }
-
-    public UUID getUid() {
-        return uid;
-    }
-
-    public void setUid(UUID uid) {
-        this.uid = uid;
     }
 }

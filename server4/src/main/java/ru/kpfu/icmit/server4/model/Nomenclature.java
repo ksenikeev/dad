@@ -1,7 +1,9 @@
 package ru.kpfu.icmit.server4.model;
 
+import org.hibernate.annotations.Type;
 import ru.kpfu.icmit.server4.model.soap.Content;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlElement;
 import java.util.Date;
 import java.util.UUID;
 
@@ -13,6 +15,7 @@ public class Nomenclature extends Content {
     @SequenceGenerator(name = "nomenclatureIdGenerator", sequenceName = "nomenclature_seq", allocationSize=1)
     Long id;
 
+    @Type(type="pg-uuid")
     private UUID uid;
 
     private String name;
@@ -40,7 +43,7 @@ public class Nomenclature extends Content {
         this.id = id;
     }
 
-    //@XmlElement
+    @XmlElement(name = "productName")
     public String getName() {
         return name;
     }
@@ -49,7 +52,6 @@ public class Nomenclature extends Content {
         this.name = name;
     }
 
-    //@XmlElement
     public Date getCreateDate() {
         return createDate;
     }
@@ -58,7 +60,6 @@ public class Nomenclature extends Content {
         this.createDate = createDate;
     }
 
-    //@XmlElement
     public Date getModifyDate() {
         return modifyDate;
     }
@@ -67,7 +68,6 @@ public class Nomenclature extends Content {
         this.modifyDate = modifyDate;
     }
 
-    //@XmlElement
     public UUID getUid() {
         if (uid == null) {
              uid = UUID.randomUUID();
@@ -81,7 +81,7 @@ public class Nomenclature extends Content {
 
     @Override
     public String toString() {
-        return "Nomenclature{" +
+        return "Nomenclature {" +
                 "name='" + name + '\'' +
                 ", createDate=" + createDate +
                 ", modifyDate=" + modifyDate +

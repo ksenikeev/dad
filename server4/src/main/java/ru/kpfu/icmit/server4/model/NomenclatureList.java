@@ -1,8 +1,6 @@
 package ru.kpfu.icmit.server4.model;
 
-import ru.kpfu.icmit.server4.model.Nomenclature;
 import ru.kpfu.icmit.server4.model.soap.Content;
-
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import java.util.List;

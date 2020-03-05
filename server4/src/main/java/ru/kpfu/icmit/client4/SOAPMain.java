@@ -10,6 +10,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
+import java.util.List;
 
 public class SOAPMain {
 
@@ -21,7 +22,8 @@ public class SOAPMain {
         //System.out.println(envelope);
         SOAPSender sender = new SOAPSender();
 
-        sender.sendNomenclature(new File("envelope.xml"));
+        List<Nomenclature> lst = sender.getNomenclatures();
+        lst.forEach(System.out::println);
     }
 
     public static void createEnveope() {

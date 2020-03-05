@@ -17,7 +17,7 @@
 <div id="content">
 	<ul>
 		<#list model["nomenclatures"] as nomenclature>
-		<li>${nomenclature.name}</li>
+		<li>${nomenclature.id} ${nomenclature.name}</li>
 		</#list>
 	</ul>
 

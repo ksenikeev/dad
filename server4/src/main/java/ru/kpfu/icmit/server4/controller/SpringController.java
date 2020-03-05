@@ -6,9 +6,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import ru.kpfu.icmit.server4.model.Nomenclature;
 import ru.kpfu.icmit.server4.service.NomenclatureService;
-
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,7 +19,8 @@ public class SpringController {
     private NomenclatureService nomenclatureService;
 
     @RequestMapping(value = "/nomenclature")
-    public String getNomenclatureList(@RequestParam String dateFrom, @ModelAttribute("model") ModelMap model) {
+    public String getNomenclatureList(@RequestParam(required = false) String dateFrom,
+                                      @ModelAttribute("model") ModelMap model) {
 
         if (dateFrom == null || dateFrom.length() == 0) {
             dateFrom = "2019-01-01T00:00:00.0+03:00";
@@ -39,8 +37,6 @@ public class SpringController {
 
         model.addAttribute("reqdate", dateFrom);
         model.addAttribute("nomenclatures", nomenclatures);
-
-        System.out.println("nomenclatures" + nomenclatures);
 
         return "/dict/nomenclature";
     }
@@ -84,4 +80,20 @@ public class SpringController {
             this.name = name;
         }
     }
+
+    @RequestMapping(value = "/pagenomenclature")
+    public String getNomenclatureList(@RequestParam(required = false, defaultValue = "0") int from,
+                                      @RequestParam(required = false, defaultValue = "100") int to,
+                                      @ModelAttribute("model") ModelMap model) {
+
+        System.out.println();
+
+        List<Nomenclature> nomenclatures = nomenclatureService.getNomenclatureFromTo(from, to);
+
+        model.addAttribute("reqdate", "");
+        model.addAttribute("nomenclatures", nomenclatures);
+
+        return "/dict/nomenclature";
+    }
+
 }

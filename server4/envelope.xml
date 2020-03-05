@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Envelope>
-    <Body>
+<envelope>
+    <body>
         <nomenclature>
-            <name>Ж/Д вагон</name>
-            <uid>47ba91a9-4c59-4800-b11a-3b508951f27a</uid>
+            <productName>Ж/Д вагон</productName>
+            <uid>f0a9e899-3c90-4c80-a53c-68bf3f9db1fa</uid>
         </nomenclature>
-    </Body>
-    <Header/>
-</Envelope>
+    </body>
+    <header/>
+</envelope>

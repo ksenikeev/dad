@@ -30,7 +30,11 @@ public class EnvelopeController {
 
             nomenclature.setCreateDate(new Date());
             nomenclature.setModifyDate(new Date());
-            nomenclature = nomenclatureService.save(nomenclature);
+
+           nomenclature = nomenclatureService.save(nomenclature);
+
+            nomenclature.setId(nomenclature.getId());
+
             envelope.getBody().setContent(nomenclature);
         }
         return envelope;
